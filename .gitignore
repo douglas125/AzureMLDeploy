@@ -1,0 +1,12 @@
+csharp/AzureImageModelDeployExample/AzureImageModelDeployExample/obj/
+csharp/AzureImageModelDeployExample/.vs/
+csharp/AzureImageModelDeployExample/packages/
+csharp/AzureImageModelDeployExample/Properties/
+.ipynb_checkpoints/
+__pycache__/
+*.pdb
+*.xml
+*.h5
+*.png
+
+*.exe.config

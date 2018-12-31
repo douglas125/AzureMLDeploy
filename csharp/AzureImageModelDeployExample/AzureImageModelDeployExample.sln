@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureImageModelDeployExample", "AzureImageModelDeployExample\AzureImageModelDeployExample.csproj", "{B632A376-7768-45A8-B52C-6B65D1C5A68F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B632A376-7768-45A8-B52C-6B65D1C5A68F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B632A376-7768-45A8-B52C-6B65D1C5A68F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B632A376-7768-45A8-B52C-6B65D1C5A68F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B632A376-7768-45A8-B52C-6B65D1C5A68F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC608A0E-EA9F-48FD-BFA4-C7FC564C52B1}
+	EndGlobalSection
+EndGlobal
