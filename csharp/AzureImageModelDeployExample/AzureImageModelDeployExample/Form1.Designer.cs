@@ -36,7 +36,7 @@
             this.btnLoadImage = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.gbImages = new System.Windows.Forms.GroupBox();
             this.pbMask = new System.Windows.Forms.PictureBox();
             this.picImg = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,7 +45,7 @@
             this.chkOverlay = new System.Windows.Forms.CheckBox();
             this.chkLayers = new System.Windows.Forms.CheckedListBox();
             this.gbImgUpload.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.gbImages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -145,16 +145,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Predict endpoint:";
             // 
-            // groupBox2
+            // gbImages
             // 
-            this.groupBox2.Controls.Add(this.pbMask);
-            this.groupBox2.Controls.Add(this.picImg);
-            this.groupBox2.Location = new System.Drawing.Point(200, 153);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1049, 538);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Image";
+            this.gbImages.Controls.Add(this.pbMask);
+            this.gbImages.Controls.Add(this.picImg);
+            this.gbImages.Location = new System.Drawing.Point(200, 153);
+            this.gbImages.Name = "gbImages";
+            this.gbImages.Size = new System.Drawing.Size(1049, 538);
+            this.gbImages.TabIndex = 1;
+            this.gbImages.TabStop = false;
+            this.gbImages.Text = "Image";
             // 
             // pbMask
             // 
@@ -173,6 +173,7 @@
             this.picImg.Size = new System.Drawing.Size(512, 512);
             this.picImg.TabIndex = 0;
             this.picImg.TabStop = false;
+            this.picImg.MouseMove += new System.Windows.Forms.MouseEventHandler(this.picImg_MouseMove);
             // 
             // label3
             // 
@@ -232,14 +233,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1261, 703);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.gbImages);
             this.Controls.Add(this.gbImgUpload);
             this.Name = "Form1";
             this.Text = "Azure Image Model Deploy Example";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.gbImgUpload.ResumeLayout(false);
             this.gbImgUpload.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.gbImages.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbMask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -258,7 +259,7 @@
         private System.Windows.Forms.Button btnLoadImage;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox gbImages;
         private System.Windows.Forms.PictureBox picImg;
         private System.Windows.Forms.PictureBox pbMask;
         private System.Windows.Forms.Label lbl_taskid;

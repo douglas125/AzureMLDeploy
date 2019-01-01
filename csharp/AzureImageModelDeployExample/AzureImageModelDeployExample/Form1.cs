@@ -303,5 +303,13 @@ namespace AzureImageModelDeployExample
 
         #endregion
 
+        private void picImg_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bmp!=null && mask!=null)
+            {
+                Color c = mask.GetPixel(e.X, e.Y);
+                gbImages.Text = label_names[c.R];
+            }
+        }
     }
 }

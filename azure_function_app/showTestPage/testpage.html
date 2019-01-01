@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Simple Machine Learning Model Server with Azure Functions</title>
+
+<link rel="stylesheet" 
+
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+
+integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+
+crossorigin="anonymous">
+
+
+
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X
+
++965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
+
+crossorigin="anonymous"></s
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" 
+
+integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" 
+
+crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+
+crossorigin="anonymous"></script>
+
+<script>
+$(document).ready(function(){
+  $("#btnNewTask").click(function(){
+    
+     var origpayload = $('#newTaskPayload').val();
+     var encodedString = btoa(origpayload);
+     var data_payload = JSON.stringify({ payload: encodedString });
+
+     $('#task_id_client').val('Sending:'+origpayload);
+
+     $.post("https://blobstorefuncteste.azurewebsites.net/api/predict_v0?code=XHeGapCuyxD7N3ftoOOPUTCZY0XHMC0XtdfbzjG0/GcWLFoRCYlk9w==",
+            data_payload, function(result){
+            $('#task_id_client').val(result);
+     });
+  });
+
+  $("#btnFetchNext").click(function(){
+     data_payload = "";
+     $.post("https://blobstorefuncteste.azurewebsites.net/api/getnexttask_v0?code=YCbRpKphpfyJR5Sa4oELsAaV4Zz6Pt8EdtasFt10zazr6ae3mQZapA==",
+            data_payload, function(result){
+            res_split = result.split("|");  
+            taskid = res_split[0];
+            payload = atob(res_split[1]);
+            $('#task_id_mlserver').val(taskid);
+            $('div#MLServer_payload').html(payload);
+     });
+  });
+
+  $("#btnSendTaskResult").click(function(){
+     var taskid = $('#task_id_mlserver').val();
+     var taskres = $('#task_result').val();
+     data_payload = JSON.stringify({ task_id: taskid, result: btoa(taskres) });
+     $.post("https://blobstorefuncteste.azurewebsites.net/api/puttaskresult_v0?code=skiy0tiMnOol4m/MgPBvCtTZIHri6DFB3wW8491dhFmyIYybABaCSw==",
+            data_payload, function(result){
+            alert(result);
+     });
+  });  
+
+  $("#btnFetchTaskResult").click(function(){
+     var taskid = $('#task_id_client').val();
+     data_payload = JSON.stringify({ task_id: taskid });
+     $.post("https://blobstorefuncteste.azurewebsites.net/api/getresult_v0?code=i29ppJFs7cfv/pQgfF4KD40YsWKbLYvgI9JnRwPqvhUG1mCUYixdwQ==",
+            data_payload, function(result){
+            result = atob(result);
+            $('div#client_results').html(result);
+     });
+  });  
+
+
+});
+
+
+</script>
+
+
+
+</head>
+
+
+<body>
+
+<div class="panel panel-primary">
+<div class="panel-heading">Simple Machine Learning Model Server Example with Azure Functions</div>
+<div class="panel-body">
+<br>
+<h2>Client side</h2>
+<br><br>
+<textarea class="form-control" name="newTaskPayload" id="newTaskPayload" newTaskPayloadwrap="off" style="width: 400px; height: 100px;">Payload data here</textarea>
+<button class="btn btn-primary" id="btnNewTask">POST new task</button>
+<button class="btn btn-primary" id="btnFetchTaskResult">Fetch task results</button>
+<br>
+<div id="client_results"></div>
+<br>
+<input type='text' name='task_id_client' id='task_id_client' placeholder='Task ID - client side' style="width: 400px">
+<br>
+
+<br><br>
+<h2>Machine Learning Server Side</h2>
+<button class="btn btn-primary" id="btnFetchNext">Fetch next task</button>
+<br>
+<input type='text' name='task_id_mlserver' id='task_id_mlserver' placeholder='Task ID - ML server side' style="width: 400px" readonly>
+<br>
+<div id="MLServer_payload"></div>
+<br><br>
+<textarea class="form-control" name="task_result" id="task_result" wrap="off" style="width: 400px; height: 100px;">Task result here</textarea>
+<button class="btn btn-primary" id="btnSendTaskResult">POST task results</button>
+<br>
+
+
+<br>
+</div>
+</div>
+</div>
+<div class="panel panel-primary">
+<div class="panel-heading">Simple Machine Learning Model Server Example with Azure Functions</div>
+<div class="panel-body">
+<br>
+<div id="tagEmProcesso"></div>
+<br>
+<div id="ativFIC"></div>
+<br>
+</div>
+</div>
+</div>
+
+</body>
+</html>
