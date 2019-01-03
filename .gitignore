@@ -7,6 +7,5 @@ __pycache__/
 *.pdb
 *.xml
 *.h5
-*.png
 
 *.exe.config
