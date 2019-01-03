@@ -13,6 +13,12 @@ It turns out that this can be complicated: you might need to set up a server wit
 
 The base code for Azure Functions can be found in azure_function_app folder. The simplest way to get started is to create a new function app and create the 4 endpoints needed (2 for client: send task and receive results, 2 for MLServer: retrieve task and send results). Copy and paste each function code and create the Integration with Azure Blob Storage.
 
+# What is in this repository?
+
+- Source code for the Azure Function App that handles client and MLServer data;
+- Source code for C# client that sends images for semantic segmentation;
+- Source code for python MLServer that uses DeepLabv3+ to predict segmentation masks and sends results to Funcion App server.
+
 # Sample application: Image Segmentation Using DeepLabv3+
 
 As a sample application, we show how to serve the amazing DeepLabv3+ segmentation model (https://github.com/bonlime/keras-deeplab-v3-plus) using a C# client application and a python MLServer (running locally or using Google Colab):
