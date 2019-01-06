@@ -13,6 +13,8 @@ It turns out that this can be complicated: you might need to set up a server wit
 
 The base code for Azure Functions can be found in azure_function_app folder. The simplest way to get started is to create a new function app and create the 4 endpoints needed (2 for client: send task and receive results, 2 for MLServer: retrieve task and send results). Copy and paste each function code and create the Integration with Azure Blob Storage.
 
+Note: the machine learning model will NOT necessarily run in the Azure Function App. It will run in a machine learning server of your choice, which could be local, deployed to a VM or to a container.
+
 # What is in this repository?
 
 - Source code for the Azure Function App that handles client and MLServer data;
